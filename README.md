@@ -5,6 +5,30 @@ This repo comprises of material related to threat modelling of DEFI and other Bl
 In this threat analysis, the focus is primarily on dissecting the functional aspects of various web3 components, including NFT marketplaces, DAOs, Bridges, Dex. Recognizing that each component possesses a set of common functionalities, the analysis meticulously explores the potential security vulnerabilities and threats associated with these functionalities. The approach adopts a systematic examination of each functionality in its operational context to unveil risks. The culmination of this analysis presents a comprehensive understanding of the threat landscape within the web3 ecosystem, based on its constituent functionalities.
 
 
+
+
+## NFT MarketPlace
+| Buy                                 | Sell                        | Mint               | List                                | Unlist        |
+| ----------------------------------- | --------------------------- | ------------------ | ----------------------------------- | ------------- |
+| Reentrancy                          | Reentrancy                  | ACP Implementation | Improper Handling Of Token Standard | Front Running |
+| Business Logic                      | Business Logic              | Griefing Attacks   | Reentrancy                          |               |
+| Matching Order Issues               | Matching Order Issues       | Tfr to Address(0)  | Business Logic                      |               |
+| Improper Handling Of Token Standard | Fee Evasion                 | Fee Evasion        | Fee Evasion                         |               |
+| Fee Evasion                         | Griefing Attacks            | Business Logic     | Arthematical Errors                 |               |
+| Unauth Txns                         | ACP Implementation          | SafeMath Checks    | Royalty Distribution Issues         |               |
+| Arthematical Errors                 | Sig Replay                  | TimeLock Bypass    |                                     |               |
+| Gas Refund Issues                   | Fee Evasion                 | Poor Randomness    |                                     |               |
+| Front Running                       | Griefing Attacks            | Front Running      |                                     |               |
+| Governance Manipulation             | ACP Implementation          |                    |                                     |               |
+| Griefing Attacks                    | Sig Replay                  |                    |                                     |               |
+| Mev Attacks                         | Tfr to Address(0)           |                    |                                     |               |
+| Merkle Tree Hash Issue              | Front Running               |                    |                                     |               |
+| EIP712 Signature Replay             | Royalty Distribution Issues |                    |                                     |               |
+| ACP Implementation                  |                             |                    |                                     |               |
+| Sig Replay                          |                             |                    |                                     |               |
+| Tfr to Address(0)                   |                             |                    |                                     |               |
+| Royalty Distribution Issues         |                             |                    |                                     ||
+
 ## DAOs (Decentralized Autonomous Organizations)
 | Proposal Maker      | Voter          | Voting Power       | Smart Contracts             | Oracle             | Treasury          |
 | ------------------- | -------------- | ------------------ | --------------------------- | ------------------ | ----------------- | 
@@ -16,3 +40,16 @@ In this threat analysis, the focus is primarily on dissecting the functional asp
 |                     |                |                    | <details><summary>Double Execution</summary>*In terms of DAO , Double Execution refers to a Smart Contract issue in which an attacker can execute a reentrancy in the execute/vote method of the DAO in the same Block.<br>A theoretical example can be a DAO with voting functionality and in the voting() or execution() there exist a reentrancy and an attacker can abuse it to cause double voting which will eventually affect the output of the proposal.*</details>            |                    |                   |
 |                     |                |                    | <details><summary>Access Control Issue</summary>*Access control issues refer to a type of security vulnerability that occurs when inadequate controls or restrictions exist on who can access and modify certain resources or data within a system. In terms of DAO an attacker can leverage a misconfigured access control to execute higer leverage methods which can have implication depending upon the methods.<br>Example:<b1>DaoMaker was exploited for ~$4m. They left the `init` function unprotected. The attacker re-initialized the contract with malicious data and then called `emergencyExit` to get away with the funds.<br>https://twitter.com/Mudit__Gupta/status/1434059922774237185*</details>|||
 |                     |                |                    | <details><summary>Profanity Wallet</summary>*A vulnerability in Profanity Wallets were identified by 1inch via which it was possible to crack the Private keys of Wallets generated via Profanity Generator.<br>Example:<br>Two projects were hacked via profanity issue<br>FriesDao:https://twitter.com/friesdao/status/1585712229067915264<br>Wintermute: https://twitter.com/EvgenyGaevoy/status/1572329148411936770<br>Although Wintermute is not a DAO but the threat is applicable across all type of Blockchain Apps deployed using profanity wallets*</details>|||
+
+
+## Bridges
+| **Swap**                          | **Deposit/ Lock**                 | Withdraw/ Unlock              | Approve        | Mint                             | Burn                  | Verify_Func        | Pause          | Unpause        |
+| ----------------------------- | ----------------------------- | ----------------------------- | -------------- | -------------------------------- | --------------------- | ------------------ | -------------- | -------------- |
+| Insufficient Gas              | Chain Rollups                 | Unauth Unlocking              | Access Control | Replay Attacks                   |                       | Sig Replay Attacks | Access Control | Access Control |
+| Liquidity drying              | Unrestricted Deposit Emitting | Cross-Chain Messaging Failure | Checks Bypass  | Imbalancement of Src Chain Funds |                       | 51% Attack         |                |                |
+| Fee Evasion                   | Chain_id Checks               |                               |                |                                  |                       | Collision attacks  |                |                |
+| Chain_id DOS                  | Cross-Chain Messaging Failure |                               |                |                                  |                       | Chain Identifications             |                |
+| Business Logic Flaw           | Business Logic Flaw           |                               |                |                                  |                       |                    |                |                |
+| Malicious Token Listing       |                               |                               |                |                                  |                       |                    |                |                |
+| Cross-Chain Messaging Failure |                               |                               |                |                                  |                       |                    |                |
+| Address(0) Checks             |                               |                               |                |                                  |                       |                    |                |
