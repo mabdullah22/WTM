@@ -1,5 +1,8 @@
 # Defi Threat Modeling
-This repo comprises of material related to threat modelling of DEFI and other Blockchain related Ecosystem
+This repo comprises of material related to threat modelling of DEFI and other Blockchain related Ecosystem.
+
+## Approach 
+
 
 ## DAOs (Decentralized Autonomous Organizations)
 | Proposal Maker      | Voter          | Voting Power       | Smart Contracts             | Oracle             | Treasury          |
