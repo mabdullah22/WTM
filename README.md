@@ -2,6 +2,7 @@
 This repo comprises of material related to threat modelling of DEFI and other Blockchain related Ecosystem.
 
 ## Approach 
+In this threat analysis, the focus is primarily on dissecting the functional aspects of various web3 components, including NFT marketplaces, DAOs, Bridges, Dex. Recognizing that each component possesses a set of common functionalities, the analysis meticulously explores the potential security vulnerabilities and threats associated with these functionalities. The approach adopts a systematic examination of each functionality in its operational context to unveil risks. The culmination of this analysis presents a comprehensive understanding of the threat landscape within the web3 ecosystem, based on its constituent functionalities.
 
 
 ## DAOs (Decentralized Autonomous Organizations)
