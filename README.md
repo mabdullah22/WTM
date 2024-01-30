@@ -10,7 +10,7 @@ In this threat analysis, the focus is primarily on dissecting the functional asp
 ## NFT MarketPlace
 | Buy                                 | Sell                        | Mint               | List                                | Unlist        |
 | ----------------------------------- | --------------------------- | ------------------ | ----------------------------------- | ------------- |
-| Reentrancy                          | Reentrancy                  | ACP Implementation | Improper Handling Of Token Standard | Front Running |
+| Re-entrancy                          | Reentrancy                  | ACP Implementation | Improper Handling Of Token Standard | Front Running |
 | Business Logic                      | Business Logic              | Griefing Attacks   | Reentrancy                          |               |
 | Matching Order Issues               | Matching Order Issues       | Tfr to Address(0)  | Business Logic                      |               |
 | Improper Handling Of Token Standard | Fee Evasion                 | Fee Evasion        | Fee Evasion                         |               |
